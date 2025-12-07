@@ -1,4 +1,4 @@
-import { Mail, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import AnimatedBackground from './AnimatedBackground';
 import Image from 'next/image';
@@ -33,10 +33,6 @@ export default function Footer() {
               <a href="mailto:budaberg35@gmail.com" className="hover:text-accent-yellow transition-colors">
                 budaberg35@gmail.com
               </a>
-            </div>
-            <div className="flex items-center space-x-3">
-              <MapPin className="w-5 h-5 text-accent-yellow" />
-              <span>Chartres de Bretagne, France</span>
             </div>
           </div>
 

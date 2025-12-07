@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
@@ -65,12 +65,6 @@ export default function Contact() {
                       budaberg35@gmail.com
                     </a>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <MapPin className="w-6 h-6 text-accent-red" />
-                    <span className="text-custom-grey">
-                      Chartres de Bretagne, France
-                    </span>
-                  </div>
                 </div>
               </div>
 
@@ -129,18 +123,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Map */}
-            <div className="h-[600px] rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.123456789012!2d-1.701234567890123!3d48.04123456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480edf0c0c0c0c0c%3A0x0!2sChartres-de-Bretagne!5e0!3m2!1sfr!2sfr!4v1234567890123!5m2!1sfr!2sfr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
           </div>
         </div>
       </div>
