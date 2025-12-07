@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 export default function EntretienPrealable() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     message: '',
   });
 
@@ -23,7 +22,7 @@ export default function EntretienPrealable() {
       });
       if (response.ok) {
         alert('Message envoyé avec succès !');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
       alert('Erreur lors de l\'envoi du message');
@@ -58,12 +57,6 @@ export default function EntretienPrealable() {
                     </a>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <Phone className="w-6 h-6 text-accent-red" />
-                    <a href="tel:+33610659849" className="text-custom-grey hover:text-accent-red transition-colors">
-                      06 10 65 98 49
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-4">
                     <MapPin className="w-6 h-6 text-accent-red" />
                     <span className="text-custom-grey">
                       Chartres de Bretagne, France
@@ -87,19 +80,6 @@ export default function EntretienPrealable() {
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-red focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-custom-grey mb-2">
-                      Téléphone
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-red focus:border-transparent"
                       required
                     />

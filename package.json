@@ -11,6 +11,9 @@
   "keywords": ["web development", "portfolio", "nextjs", "react"],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "15.2.1"
+  },
   "dependencies": {
     "next": "13.4.12",
     "react": "18.2.0",

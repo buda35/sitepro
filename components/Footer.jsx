@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Mail, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import AnimatedBackground from './AnimatedBackground';
 import Image from 'next/image';
@@ -32,12 +32,6 @@ export default function Footer() {
               <Mail className="w-5 h-5 text-accent-yellow" />
               <a href="mailto:budaberg35@gmail.com" className="hover:text-accent-yellow transition-colors">
                 budaberg35@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Phone className="w-5 h-5 text-accent-yellow" />
-              <a href="tel:+33610659849" className="hover:text-accent-yellow transition-colors">
-                06 10 65 98 49
               </a>
             </div>
             <div className="flex items-center space-x-3">

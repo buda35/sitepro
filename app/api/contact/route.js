@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export async function POST(req) {
-  const { name, email, phone, message } = await req.json();
+  const { name, email, message } = await req.json();
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -18,7 +18,7 @@ export async function POST(req) {
     from: email,
     to: 'budaberg35@gmail.com',
     subject: `Souhait d'information pour mon futur projet - ${name}`,
-    text: `Nom: ${name}\nEmail: ${email}\nTéléphone: ${phone}\nMessage: ${message}`,
+    text: `Nom: ${name}\nEmail: ${email}\nMessage: ${message}`,
   });
 
   // Envoi du mail de confirmation à l'expéditeur
@@ -41,7 +41,6 @@ export async function POST(req) {
         <p>Nous avons bien reçu votre demande et nous ne manquerons pas de revenir vers vous.</p>
         <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h3 style="color: #CD291E; margin-top: 0;">Résumé de votre message :</h3>
-          <p><strong>Téléphone :</strong> ${phone}</p>
           <p><strong>Message :</strong> ${message}</p>
         </div>
         <p>Merci de votre confiance.</p>
