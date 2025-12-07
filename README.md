@@ -12,8 +12,11 @@ npm install
 
 3. Créez un fichier `.env.local` à la racine du projet et ajoutez :
 ```
-GMAIL_APP_PASSWORD=votre_mot_de_passe_application_gmail
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=votre_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=votre_public_key
 ```
+
+**Note :** Le Service ID EmailJS est déjà configuré : `service_rc7871q`
 
 ## 🛠️ Développement
 
@@ -58,10 +61,10 @@ npm start
 - React 18.2.0
 - Tailwind CSS
 - Lucide React pour les icônes
-- Nodemailer pour le formulaire de contact
+- EmailJS pour le formulaire de contact
 
 ## 📝 Notes
 
 - Assurez-vous d'avoir les images nécessaires dans le dossier `public/uploads/`
-- Le formulaire de contact nécessite une configuration Gmail avec un mot de passe d'application
+- Le formulaire de contact utilise EmailJS. Configurez vos clés dans `.env.local`
 - Les couleurs et styles peuvent être personnalisés dans `tailwind.config.js` 

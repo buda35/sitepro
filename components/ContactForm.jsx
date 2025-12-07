@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Send, Loader2, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -18,23 +19,23 @@ export default function ContactForm() {
     setError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        'service_rc7871q',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_id',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
         },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de l\'envoi du message.');
-      }
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      );
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       setStatus('error');
-      setError(err.message);
+      setError('Une erreur est survenue lors de l\'envoi du message.');
+      console.error('Erreur EmailJS:', err);
     }
   };
 

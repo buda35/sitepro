@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function EntretienPrealable() {
   const [formData, setFormData] = useState({
@@ -9,23 +10,32 @@ export default function EntretienPrealable() {
     email: '',
     message: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        'service_rc7871q',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_id',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          subject: 'Demande d\'entretien préalable',
         },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        alert('Message envoyé avec succès !');
-        setFormData({ name: '', email: '', message: '' });
-      }
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+      );
+
+      alert('Message envoyé avec succès !');
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Erreur EmailJS:', error);
       alert('Erreur lors de l\'envoi du message');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -111,9 +121,10 @@ export default function EntretienPrealable() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-accent-red text-white py-3 rounded-lg hover:bg-accent-red/90 transition-colors"
+                    disabled={isLoading}
+                    className="w-full bg-accent-red text-white py-3 rounded-lg hover:bg-accent-red/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Demander un entretien
+                    {isLoading ? 'Envoi en cours...' : 'Demander un entretien'}
                   </button>
                 </form>
               </div>
